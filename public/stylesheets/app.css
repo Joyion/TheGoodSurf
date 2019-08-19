@@ -1,0 +1,15 @@
+.smallimg img {
+    max-width: 300px;
+    height: 300px;
+    object-fit: contain;
+}
+
+.tinyimg img {
+    max-width: 200px;
+    height: 300px;
+    object-fit: contain;
+}
+
+.aligncenter {
+    text-align: center;
+}
