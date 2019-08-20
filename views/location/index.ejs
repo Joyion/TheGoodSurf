@@ -1,1 +1,44 @@
-<h1>ALL THE ARES IN THE WORLD</h1>
+<% include ../partials/header %>
+
+
+
+<div class="container">
+<!--main container above-->
+
+<div class="aligncenter m-3">
+<h1>The most popular surf spots from around the world</h1> 
+<br>
+</div>
+
+
+<!-- Surboard reviews -->
+<div class="row m-3">
+    <div class="col">
+        <h2>North America</h2>
+    </div>
+</div>
+
+<div class="row smallimg aligncenter">
+    <% beaches.forEach( function(beach){ %>
+    <div class="col">
+        <img src="https://images.unsplash.com/photo-1511898644705-cd35c968cf14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+            alt="">
+        <div>
+            <h3><%= beach.name %></h3>
+            <p><%= beach.description.slice(0, 100) %>...</p>
+            <br>
+            <a href="/location/northamerica/<%=beach._id%>">READ MORE</a>
+        </div>
+    </div>
+  <%  }); %>
+<!-- end of row -->
+
+
+
+<!-- end of main container-->
+</div>
+<script>
+    
+</script>
+
+<% include ../partials/footer %>

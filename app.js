@@ -9,11 +9,30 @@ app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static(__dirname +"/public"));
 console.log(__dirname);
 
+
+// get routers
 const port = process.env.PORT || 5000;
 const locationRoutes = require("./routes/location");
 const reviewRoutes = require("./routes/review")
 const beachRoutes = require("./routes/beach");
 const productRoutes = require("./routes/product");
+
+// connect to db
+const mongoose = require("mongoose");
+mongoose.connect("mongodb+srv://joyion:joyion1234@testdb-roymm.mongodb.net/test?retryWrites=true&w=majority", 
+{dbName: "TheGoodSurf", useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, "connection error"));
+db.once('open', function(){
+    console.log("Connected to Database");
+});
+
+const Beach = require("./models/beach");
+const Review = require("./models/review");
+
+const seedDb = require("./views/seed");
+// seedDb();
+
 
 console.log(process.env.GOOGLE_API);
 app.use(function(req, res, next){
@@ -21,7 +40,7 @@ app.use(function(req, res, next){
     next();
 });
 
-
+// use routes 
 app.use("/location", locationRoutes);
 app.use("/location/:area", beachRoutes);
 app.use("/reviews", reviewRoutes);

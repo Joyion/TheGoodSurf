@@ -13,3 +13,8 @@
 .aligncenter {
     text-align: center;
 }
+
+.card div {
+    width: 30%;
+   object-fit: cover;
+}
