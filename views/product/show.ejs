@@ -8,24 +8,30 @@
         <!-- row for card/map-->
         <div class="row m-3 justify-content-center">
             <!-- column for card-->
-            <div class="col-10">
-                <div class="card border-light">
-                    <div class="card-header">
-                        PRODUCT NAME BY PRODUCT COMPANY
-                    </div>
-                    <img src="https://images.unsplash.com/photo-1542400359-571d22340168?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-                        class="card-img-top" alt="...">
-                    <div class="card-body">
-                        <h5 class="card-title">RATING</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Company Website</a>
-                    </div>
+            <div class="col-12">
+                    <div class="card mx-auto mb-3">
+                            <div class="card-header"><h2><%=review.product%></h2></div>
+                            <div class="row no-gutters">
+                              <div class="col-md-4">
+                                <img src="<%=review.imgUrl%>" class="card-img" alt="...">
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h5 class="card-title"><%=review.description%></h5>
+                                  <p class="card-text"><%=review.fullreview%></p>
+                                  <p class="card-text"><small class="text-muted">Author goes here</small></p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                <!-- end of card-->
                 </div>
-                <!-- end of col for card-->
+            <!-- end of column-->
             </div>
-            <!-- column for maps/extras-->
+        
         </div>
-        <!-- end of row-->
+            
+        
         <div class="row">
             <div class="col">
                 <ul class="list-group list-group-flush">
@@ -39,12 +45,11 @@
             </div>
             <!-- end of row-->
         </div>
-
+<!-- end of main-->
+</main>
 
 </div>
 
-<!-- end of main-->
-</main>
 
 <!-- end of main container -->
 </div>

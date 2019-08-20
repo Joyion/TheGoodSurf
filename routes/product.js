@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-
+const Review = require("../models/review");
 // shows all products of type
 router.get("/", function(req,res){
     res.render("product/index");
@@ -18,7 +18,16 @@ router.get("/new", function(req,res){
 
 // show one product
 router.get("/:productId/", function(req,res){
-    res.render("product/show");
+    Review.findById(req.params.productId, function(err, review){
+        if(err){
+            console.log(err);
+        }
+        else {
+            res.render("product/show", {review: review});
+        }
+    });
+
+
 });
 
 router.get("/:productID/edit", function(req,res){

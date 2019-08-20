@@ -21,40 +21,24 @@
 </div>
 
 <div class="row smallimg aligncenter">
-    <div class="col">
-        <img src="https://images.unsplash.com/photo-1511898644705-cd35c968cf14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+<% surfboards.forEach(function(board) { %>
+    <div class="col-4">
+        <img src="<%= board.imgUrl %>"
             alt="">
         <div>
-            <h3>THIS IS A SURBOARD REVIEW</h3>
-            <p>BLAH BLAH BLAH</p>
+            <h3><%= board.product %></h3>
+            <p><%= board.description %></p>
             <br>
-            <a href="">READ MORE</a>
+            <a href="/reviews/<%=board.productType%>/<%=board._id%>">READ MORE</a>
         </div>
     </div>
-    <div class="col">
-        <img src="https://images.unsplash.com/photo-1511898644705-cd35c968cf14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            alt="">
-        <div>
-            <h3>THIS IS A SURBOARD REVIEW</h3>
-            <p>BLAH BLAH BLAH</p>
-            <br>
-            <a href="">READ MORE</a>
-        </div>
-    </div>
-    <div class="col">
-        <img src="https://images.unsplash.com/photo-1511898644705-cd35c968cf14?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-            alt="">
-        <div>
-            <h3>THIS IS A SURBOARD REVIEW</h3>
-            <p>BLAH BLAH BLAH</p>
-            <br>
-            <a href="">READ MORE</a>
-        </div>
-    </div>
+<% }); %>
+<!-- end of row-->
 </div>
+
 <div class="row">
     <div class="col">
-        <a href="MORE SURFBOARD REVIEWS"></a>
+        <a href="/reviews/<%=surfboards[0].productType%>"> More Surfboard Reviews</a>
     </div>
 </div>
 <!-- Wetsuits-->
@@ -62,39 +46,29 @@
     <div class="col">
         <h2>Wetsuits</h2>
     </div>
-
+<!-- end of row-->
 </div>
 
 <div class="row smallimg aligncenter">
-    <div class="col">
-        <img src="https://images.pexels.com/photos/1546104/pexels-photo-1546104.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+    <% wetsuits.forEach(function(suit) { %>
+    <div class="col-4">
+        <img src="<%=suit.imgUrl%>"
             alt="">
         <div>
-            <h3>THIS IS A SURBOARD REVIEW</h3>
-            <p>BLAH BLAH BLAH</p>
+            <h3><%=suit.product%></h3>
+            <p><%=suit.description%></p>
             <br>
-            <a href="">READ MORE</a>
+            <a href="/reviews/<%=suit.productType%>/<%=suit._id%>">READ MORE</a>
         </div>
+        
     </div>
+<% }) %>
+<!-- end of row -->
+</div>
+
+<div class="row">
     <div class="col">
-        <img src="https://images.pexels.com/photos/1546104/pexels-photo-1546104.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-            alt="">
-        <div>
-            <h3>THIS IS A SURBOARD REVIEW</h3>
-            <p>BLAH BLAH BLAH</p>
-            <br>
-            <a href="">READ MORE</a>
-        </div>
-    </div>
-    <div class="col">
-        <img src="https://images.pexels.com/photos/2564861/pexels-photo-2564861.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-            alt="">
-        <div>
-            <h3>THIS IS A SURBOARD REVIEW</h3>
-            <p>BLAH BLAH BLAH</p>
-            <br>
-            <a href="">READ MORE</a>
-        </div>
+        <a href="/reviews/<%=wetsuits[0].productType%>">More Wetsuit Reviews</a>
     </div>
 </div>
 
@@ -108,45 +82,24 @@
 
 <!-- the extras articles-->
 <div class="row tinyimg m-0 aligncenter">
-    <div class="col">
+    <% extras.forEach(function(extra){ %>
+    <div class="col-4">
         <div>
-            <img src="https://images.unsplash.com/photo-1528150377705-20c6405f1ed5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
-            <h3>THIS IS A SURBOARD REVIEW</h3>
-            <p>BLAH BLAH BLAH</p>
+            <img src="<%=extra.imgUrl%>" alt="">
+            <h3><%=extra.product%></h3>
+            <p><%=extra.description%></p>
             <br>
-            <a href="">READ MORE</a>
+            <a href="/reviews/<%=extra.productType%>/<%=extra._id%>">READ MORE</a>
         </div>
+    </div>
+  <%  }); %>
+<!-- end of row -->
+</div>
 
-    </div>
-    <div class="col">
-        <div>
-            <img src="https://images.unsplash.com/photo-1423594390679-b5d9611e1a2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
-            <h3>EXTRA REVIEW</h3>
-            <p>BLAH BLAH BLAH</p>
-            <br>
-            <a href="">READ MORE</a>
+<div class="row">
+        <div class="col">
+            <a href='/reviews/<%=extras[0].productType%>'>MORE "EXTRAS REVIEWS</a>
         </div>
-
-    </div>
-    <div class="col">
-        <div>
-            <img src="https://images.unsplash.com/photo-1528150377705-20c6405f1ed5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
-            <h3>EXTRA REVIEW</h3>
-            <p>BLAH BLAH BLAH</p>
-            <br>
-            <a href="">READ MORE</a>
-        </div>
-
-    </div>
-    <div class="col">
-        <div>
-            <img src="https://images.unsplash.com/photo-1423594390679-b5d9611e1a2f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
-            <h3>EXTRA REVIEW</h3>
-            <p>BLAH BLAH BLAH</p>
-            <br>
-            <a href="">READ MORE</a>
-        </div>
-    </div>
 </div>
 <!-- end of extras row-->
 
