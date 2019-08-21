@@ -13,96 +13,36 @@
 </div>
 
 
-<!-- Surboard reviews -->
+<!-- loop through each product and display most recent 3 of each type-->
+<% products.forEach(function(type){ %>
 <div class="row m-3">
     <div class="col">
-        <h2>LATEST SURFBOARDS REVIEWS</h2>
+        <h2><%=type[0].productType%></h2>
+        <a href="/reviews/<%=type[0].productType%>/">All <%=type[0].productType%> Reviews </a>
     </div>
 </div>
-
 <div class="row smallimg aligncenter">
-<% surfboards.forEach(function(board) { %>
+<% type.forEach( function(product) { %>
     <div class="col-4">
-        <img src="<%= board.imgUrl %>"
+        <img src="<%= product.imgUrl %>"
             alt="">
         <div>
-            <h3><%= board.product %></h3>
-            <p><%= board.description %></p>
+            <h3><%= product.product %></h3>
+            <p><%= product.description %></p>
             <br>
-            <a href="/reviews/<%=board.productType%>/<%=board._id%>">READ MORE</a>
+            <a href="/reviews/<%=product.productType%>/<%=product._id%>">READ MORE</a>
         </div>
     </div>
 <% }); %>
 <!-- end of row-->
-</div>
-
 <div class="row">
     <div class="col">
-        <a href="/reviews/surfboards/"> More Surfboard Reviews</a>
-    </div>
-</div>
-<!-- Wetsuits-->
-<div class="row">
-    <div class="col">
-        <h2>Wetsuits</h2>
-    </div>
-<!-- end of row-->
-</div>
-
-<div class="row smallimg aligncenter">
-    <% wetsuits.forEach(function(suit) { %>
-    <div class="col-4">
-        <img src="<%=suit.imgUrl%>"
-            alt="">
-        <div>
-            <h3><%=suit.product%></h3>
-            <p><%=suit.description%></p>
-            <br>
-            <a href="/reviews/<%=suit.productType%>/<%=suit._id%>">READ MORE</a>
-        </div>
-        
-    </div>
-<% }) %>
-<!-- end of row -->
-</div>
-
-<div class="row">
-    <div class="col">
-        <a href="/reviews/wetsuits/">More Wetsuit Reviews</a>
+        <a href="/reviews/<%=type[0].productType%>/"> More <%=type[0].productType%> Reviews</a>
     </div>
 </div>
 
-<!-- The extras -->
-<div class="row">
-    <div class="col">
-        <h2>THE EXTRAS</h2>
-    </div>
-
 </div>
-
-<!-- the extras articles-->
-<div class="row tinyimg m-0 aligncenter">
-    <% extras.forEach(function(extra){ %>
-    <div class="col-4">
-        <div>
-            <img src="<%=extra.imgUrl%>" alt="">
-            <h3><%=extra.product%></h3>
-            <p><%=extra.description%></p>
-            <br>
-            <a href="/reviews/<%=extra.productType%>/<%=extra._id%>">READ MORE</a>
-        </div>
-    </div>
-  <%  }); %>
-<!-- end of row -->
-</div>
-
-<div class="row">
-        <div class="col">
-            <a href='/reviews/extras/'>MORE "EXTRAS REVIEWS</a>
-        </div>
-</div>
-<!-- end of extras row-->
-
+<% }); %>
 
 
 <!-- end of main container-->

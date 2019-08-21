@@ -58,7 +58,7 @@ seedDb = function () {
         {
             name: "Ubatuba",
             imgUrl: "https://images.unsplash.com/photo-1519413016318-6b13004dc95b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60",
-            area: "North America",
+            area: "South America",
             address: "Brazil",
             description: "A popular beach in San Diego for exprienced surfers",
             stars: 5,

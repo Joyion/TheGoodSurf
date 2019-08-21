@@ -10,35 +10,26 @@
     <!-- Title -->
     <div class="row py-4 text-center">
         <div class="col">
-            <h2>North America</h2>
+            <h2><%=beaches[0].area%></h2>
         </div>
 
     </div>
 
     <!-- List All beaches of area-->
     <div class="row">
+        <% beaches.forEach(function(beach) { %>
         <div class="col-3">
             <div class="card" >
-                        <h5 class="card-header">Featured</h5>
-                        <img class="card-img-top" src="https://images.unsplash.com/photo-1517699418036-fb5d179fef0c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+                        <h5 class="card-header"><%=beach.name%></h5>
+                        <img class="card-img-top" src="<%=beach.imgUrl%>" alt="">
                         <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <h5 class="card-title">STARS <%=beach.stars%></h5>
+                        <p class="card-text"><%=beach.description.slice(0, 50)%>...</p>
+                        <a href="/locations/<%=beach.area%>/<%=beach._id%>" class="btn btn-primary">Get Forecast</a>
                         </div>
                 </div>
         </div>
-        <div class="col-3">
-            <div class="card" >
-                        <h5 class="card-header">Featured</h5>
-                        <img class="card-img-top" src="https://images.unsplash.com/photo-1517699418036-fb5d179fef0c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
-                        <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">View Forecast</a>
-                        </div>
-                </div>
-        </div>
+  <%  }); %>
     </div>
         
             

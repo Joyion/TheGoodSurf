@@ -12,10 +12,9 @@ console.log(__dirname);
 
 // get routers
 const port = process.env.PORT || 5000;
-const locationRoutes = require("./routes/location");
 const reviewRoutes = require("./routes/review")
-const beachRoutes = require("./routes/beach");
-const productRoutes = require("./routes/product");
+const beachRoutes = require("./routes/location");
+
 
 // connect to db
 const mongoose = require("mongoose");
@@ -41,10 +40,9 @@ app.use(function(req, res, next){
 });
 
 // use routes 
-app.use("/location", locationRoutes);
-app.use("/location/:area", beachRoutes);
+app.use("/locations", beachRoutes);
 app.use("/reviews", reviewRoutes);
-app.use("/reviews/:type", productRoutes);
+
 
 
 app.get("/", function(req, res){

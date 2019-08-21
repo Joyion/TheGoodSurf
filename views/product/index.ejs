@@ -8,41 +8,29 @@
     <!-- Title -->
     <div class="row py-4 text-center">
         <div class="col">
-            <h2>Surfboard Reviews</h2>
+            <h2><%=type[0].productType%> Reviews</h2>
             <a href="">Add Review</a>
         </div>
 
     </div>
 
-    <!-- List All beaches of area-->
+    <!-- List All products of type-->
     <div class="row">
+        <%  type.forEach(function(item){ %>
         <div class="col-3">
-            <div class="card" >
+              <div class="card" >
                         <h5 class="card-header">Featured</h5>
-                        <img class="card-img-top" src="https://images.unsplash.com/photo-1517699418036-fb5d179fef0c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
+                        <img class="card-img-top" src="<%=item.imgUrl%>" alt="">
                         <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                            <h5 class="card-title"> STARS <%=item.stars%>.</h5>
+                            <p class="card-text"><%= item.description%></p>
+                            <a href="/reviews/<%=item.productType%>/<%=item._id%>" class="btn btn-primary">Read More</a>
                         </div>
                 </div>
         </div>
-        <div class="col-3">
-            <div class="card" >
-                        <h5 class="card-header">Featured</h5>
-                        <img class="card-img-top" src="https://images.unsplash.com/photo-1517699418036-fb5d179fef0c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="">
-                        <div class="card-body">
-                        <h5 class="card-title">Special title treatment</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        <a href="#" class="btn btn-primary">View Forecast</a>
-                        </div>
-                </div>
-        </div>
+        <%   }) %>
     </div>
         
-            
-   
-    <!-- end of extras row-->
 
 
 
