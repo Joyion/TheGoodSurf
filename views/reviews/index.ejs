@@ -2,20 +2,19 @@
 
 
 
-<div class="container">
+<div class="container bodycontainer">
 <!--main container above-->
 
-<div class="aligncenter m-3">
-<h1>Gear Reviews</h1> 
-<br>
-<a href=""> VIEW ALL REVIEWS</a>
-<a href="">ADD REVIEW</a>
+<div class="aligncenter m-3 py-3">
+<h1 class="subtitle">Most Recent Reviews</h1> 
+<!-- <a href="" class="mr-3"> VIEW ALL REVIEWS</a>
+<a href="">ADD REVIEW</a> -->
 </div>
 
 
 <!-- loop through each product and display most recent 3 of each type-->
 <% products.forEach(function(type){ %>
-<div class="row m-3">
+<div class="row my-3 py-2 text-center section">
     <div class="col">
         <h2><%=type[0].productType%></h2>
         <a href="/reviews/<%=type[0].productType%>/">All <%=type[0].productType%> Reviews </a>
@@ -23,7 +22,7 @@
 </div>
 <div class="row smallimg aligncenter">
 <% type.forEach( function(product) { %>
-    <div class="col-4">
+    <div class="col">
         <img src="<%= product.imgUrl %>"
             alt="">
         <div>
@@ -35,11 +34,7 @@
     </div>
 <% }); %>
 <!-- end of row-->
-<div class="row">
-    <div class="col">
-        <a href="/reviews/<%=type[0].productType%>/"> More <%=type[0].productType%> Reviews</a>
-    </div>
-</div>
+
 
 </div>
 <% }); %>

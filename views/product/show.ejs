@@ -1,7 +1,7 @@
 <% include ../partials/header %>
 
 
-<div class="container">
+<div class="container bodycontainer">
     <!-- main container -->
     <main>
 
@@ -10,12 +10,12 @@
             <!-- column for card-->
             <div class="col-12">
                     <div class="card mx-auto mb-3">
-                            <div class="card-header"><h2><%=review.product%></h2></div>
+                            <div class="card-header text-center"><h2><%=review.product%></h2></div>
                             <div class="row no-gutters">
-                              <div class="col-md-4">
+                              <div class="col-12 col-md-4">
                                 <img src="<%=review.imgUrl%>" class="card-img" alt="...">
                               </div>
-                              <div class="col-md-8">
+                              <div class="col-12 col-md-8">
                                 <div class="card-body">
                                   <h5 class="card-title"><%=review.description%></h5>
                                   <p class="card-text"><%=review.fullreview%></p>

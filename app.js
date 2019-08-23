@@ -6,7 +6,7 @@ const env = require('dotenv').config();
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(express.static(__dirname +"/public"));
+app.use("/public",express.static(__dirname + "/public"));
 console.log(__dirname);
 
 
@@ -33,11 +33,11 @@ const seedDb = require("./views/seed");
 // seedDb();
 
 
-console.log(process.env.GOOGLE_API);
-app.use(function(req, res, next){
-    res.locals.googleapi = process.env.GOOGLE_API;
-    next();
-});
+
+// app.use(function(req, res, next){
+
+//     next();
+// });
 
 // use routes 
 app.use("/locations", beachRoutes);

@@ -2,7 +2,7 @@
 
 
 
-<div class="container">
+<div class="container bodycontainer">
     <!--main container above-->
 
 
@@ -10,7 +10,7 @@
     <!-- Title -->
     <div class="row py-4 text-center">
         <div class="col">
-            <h2><%=beaches[0].area%></h2>
+            <h1 class="subtitle"><%=beaches[0].area%></h1>
         </div>
 
     </div>
@@ -18,13 +18,13 @@
     <!-- List All beaches of area-->
     <div class="row">
         <% beaches.forEach(function(beach) { %>
-        <div class="col-3">
-            <div class="card" >
-                        <h5 class="card-header"><%=beach.name%></h5>
+        <div class="col-12 col-md-3 my-2">
+            <div class="card border-light" >
+                        <h5 class="card-header text-center"><%=beach.name%></h5>
                         <img class="card-img-top" src="<%=beach.imgUrl%>" alt="">
                         <div class="card-body">
                         <h5 class="card-title">STARS <%=beach.stars%></h5>
-                        <p class="card-text"><%=beach.description.slice(0, 50)%>...</p>
+                        <p><%=beach.description.slice(0, 50)%>...</p>
                         <a href="/locations/<%=beach.area%>/<%=beach._id%>" class="btn btn-primary">Get Forecast</a>
                         </div>
                 </div>

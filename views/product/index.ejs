@@ -1,25 +1,25 @@
 <% include ../partials/header %>
 
+<!-- this is prodcut-->
 
-
-<div class="container">
+<div class="container bodycontainer">
     <!--main container above-->
 
     <!-- Title -->
-    <div class="row py-4 text-center">
-        <div class="col">
-            <h2><%=type[0].productType%> Reviews</h2>
-            <a href="">Add Review</a>
+    <div class="row text-center">
+        <div class="col my-3">
+            <h1 class="subtitle"><%=type[0].productType%> Reviews</h1>
+            <a class="my-2" href="">Add Review</a>
         </div>
 
     </div>
 
     <!-- List All products of type-->
-    <div class="row">
+    <div class="row my-2 ">
         <%  type.forEach(function(item){ %>
-        <div class="col-3">
-              <div class="card" >
-                        <h5 class="card-header">Featured</h5>
+        <div class="col-12 col-md-3 my-2">
+              <div class="card border-light" >
+                        <h5 class="card-header text-center"><%=item.product%></h5>
                         <img class="card-img-top" src="<%=item.imgUrl%>" alt="">
                         <div class="card-body">
                             <h5 class="card-title"> STARS <%=item.stars%>.</h5>

@@ -1,3 +1,62 @@
+/*
+font-family: 'Sigmar One', cursive;
+font-family: 'Lexend Deca', sans-serif;
+
+*/
+
+
+html, body {
+    font-family: 'Lexend Deca', sans-serif;
+}
+
+.bodycontainer {
+    margin-top: 95px;
+}
+
+
+/*  navbar colors */
+.navbar-brand h1 {
+    font-family: 'Sigmar One', cursive, sans-serif;
+    color: white;
+}
+
+
+.navbar-brand h1:hover {
+    color: rgb(162, 229, 232);
+    background-color: black;
+}
+
+.navbar, .dropdown-menu {
+    background-color: black;
+}
+
+.navbar a {
+    color: white;
+}
+.navbar a:hover {
+    color: rgb(162, 229, 232);
+    background-color: black;
+}
+
+/* carousel */
+
+.carousel-item img {
+    height: 400px;
+    object-fit: cover;
+}
+
+.carousel-caption h5 {
+    font-size: 35px;
+}
+
+.carousel-caption a, .carousel-caption p {
+    color: white;
+    text-shadow: 2px 2px 8px rgb(0, 0, 15);
+}
+
+
+
+/* for articles */
 .smallimg img {
     max-width: 300px;
     height: 300px;
@@ -14,13 +73,46 @@
     text-align: center;
 }
 
+.nowrap {
+    word-wrap: none;
+}
+
 .fit-image {
     max-width: 100px;
     max-height: 100px;
     object-fit: contain;
 }
 
-.card div {
-    width: 30%;
-   object-fit: cover;
+a {
+    color: rgb(52, 94, 235);
+
+}
+a:hover {
+    color: rgb(162, 229, 232);
+   text-decoration: none;
+}
+
+div.section {
+    color: white;
+    background-color: black;
+    border-radius: 10px;
+}
+
+.subtitle {
+    font-weight: 500;
+    color: black;
+}
+
+.headertitle {
+    font-weight: 600;
+    color: black;
+}
+
+.headersection {
+    font-size: 30px;
+}
+
+.card-header {
+    background-color: black;
+    color: white;
 }

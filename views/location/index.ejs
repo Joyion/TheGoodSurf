@@ -2,11 +2,11 @@
 
 
 
-<div class="container">
+<div class="container bodycontainer">
 <!--main container above-->
 
-<div class="aligncenter m-3">
-<h1>The most popular surf spots from around the world</h1> 
+<div class="aligncenter my-3 py-3">
+<h1 class="subtitle">The most popular surf spots from around the world</h1> 
 <br>
 </div>
 
@@ -14,7 +14,7 @@
 <!-- Surboard reviews -->
 <% locations.forEach(function(area) { %>
 
-<div class="row my-3">
+<div class="row my-3 py-2 text-center section">
     <div class="col">
         <h2><%=area[0].area %></h2>
         <a href="/locations/<%=area[0].area%>/">View all from <%=area[0].area%></a>
@@ -26,7 +26,7 @@
         <img src="<%=beach.imgUrl%>"
             alt="">
         <div>
-            <h3><%= beach.name %></h3>
+            <h3 class="subtitle py-2"><%= beach.name %></h3>
             <p><%= beach.description.slice(0, 100) %>...</p>
             <br>
             <a href="/locations/<%=beach.area%>/<%=beach._id%>">READ MORE</a>
