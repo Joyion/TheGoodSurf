@@ -2,7 +2,7 @@ const express = require("express");
 const app = express();
 app.set("view engine", "ejs");
 
-const env = require('dotenv').config();
+//const env = require('dotenv').config();
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
@@ -19,7 +19,7 @@ const beachRoutes = require("./routes/location");
 
 // connect to db
 const mongoose = require("mongoose");
-mongoose.connect(DATABASE, 
+mongoose.connect(process.env.DATABASE, 
 {dbName: "TheGoodSurf", useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, "connection error"));
