@@ -18,7 +18,7 @@ const beachRoutes = require("./routes/location");
 
 // connect to db
 const mongoose = require("mongoose");
-mongoose.connect("mongodb+srv://joyion:joyion1234@testdb-roymm.mongodb.net/test?retryWrites=true&w=majority", 
+mongoose.connect(process.env.DATABASE, 
 {dbName: "TheGoodSurf", useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, "connection error"));
@@ -67,7 +67,7 @@ app.get("/", function(req, res){
 });
 
 app.get("*", function(req, res){
-    res.send("you are lost");
+    res.redirect("/")
 });
 
 app.listen(port, function(){
