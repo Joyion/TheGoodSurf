@@ -7,7 +7,7 @@ app.set("view engine", "ejs");
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use("/public",express.static(__dirname + "/public"));
-console.log(__dirname);
+
 
 
 
@@ -73,5 +73,4 @@ app.get("*", function(req, res){
 
 app.listen(port, function(){
     console.log("The Good Surf at" + console.log(process.env.PORT));
-    console.log(process.env.DATABASE);
 })
