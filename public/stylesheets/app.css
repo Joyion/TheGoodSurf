@@ -26,6 +26,12 @@ html, body {
     background-color: black;
 }
 
+.fa-bars {
+    color: white;
+    padding: 4px;
+    font-size: 30px;
+}
+
 .navbar, .dropdown-menu {
     background-color: black;
 }
@@ -84,7 +90,7 @@ html, body {
 }
 
 a {
-    color: rgb(52, 94, 235);
+    color: white;
 
 }
 a:hover {
@@ -116,3 +122,24 @@ div.section {
     background-color: black;
     color: white;
 }
+
+.btn-dark {
+    background-color: black;
+}
+
+.btn-dark:hover {
+    background-color: black;
+    color: rgb(162, 229, 232);
+}
+
+.btn-secondary {
+    background-color: black;
+    border-color: white;
+}
+
+.btn-secondary:hover {
+    background-color: black;
+    border-color: rgb(162, 229, 232);
+    color: rgb(162, 229, 232);
+}
+

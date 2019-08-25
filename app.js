@@ -46,7 +46,24 @@ app.use("/reviews", reviewRoutes);
 
 
 app.get("/", function(req, res){
-    res.render("landing");
+    
+    Beach.find({name: ["Venice Beach", 'Ubatuba', 'Mundaka']}, function (err, beaches){
+        if(err){
+            console.log(err);
+        }
+        else {
+            Review.find({company: ['Pyzel', 'RipCurl', 'CleanLiving']}, function(err, reviews){
+                if(err){
+
+                }
+                else {
+                  res.render("landing", {beaches: beaches, reviews: reviews});   
+                }
+            });
+         
+        }
+    })
+   
 });
 
 app.get("*", function(req, res){

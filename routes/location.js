@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const request = require('request');
 const Beach = require("../models/beach");
 
 // landing page for locations
@@ -42,9 +43,11 @@ router.get("/:area", function(req,res){
     Beach.find({area: req.params.area}, function(err, beaches){
         if(err){
             console.log(err)
+         
         }
         else {
-             res.render("beach/index", {beaches: beaches});
+           
+           res.render("beach/index", {beaches: beaches});
         }
     });
    
@@ -58,8 +61,7 @@ router.get("/:area/:id", function(req,res){
             console.log(err)
         }
         else {
-            console.log(beach);
-            res.render("beach/show", {beach: beach});
+           res.render("beach/show", {beach: beach});
         }
     })
     

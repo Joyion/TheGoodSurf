@@ -8,7 +8,7 @@
         <div class="row py-1 justify-content-center text-center">
             <div class="col">
                 <h1 class="py-2 headertitle">GOOD FORECAST + GOOD GEAR = <br> THE GOOD SURF</h1>
-                <p class="headersection">Find accurate forecasts and honest reviews on gear</p>
+                <p class="headersection">Find accurate forecasts and honest reviews on gear.</p>
             </div>
         </div>
         <!-- start of row for best spots-->
@@ -29,24 +29,24 @@
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="https://images.unsplash.com/photo-1515541324332-7dd0c37426e0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                <img src="<%=beaches[0].imgUrl%>"
                                     class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-block">
-                                    <h5><a href="">Venice Beach</a></h5>
+                                    <h5><a href="/locations/<%=beaches[0].area%>/<%=beaches[0]._id%>"><%=beaches[0].name%></a></h5>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                <img src="<%=beaches[1].imgUrl%>"
                                     class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-block">
-                                    <h5><a href="">beaches[1].name</a></h5>
+                                    <h5><a href="/locations/<%=beaches[1].area%>/<%=beaches[1]._id%>"><%=beaches[1].name%></a></h5>
                                 </div>
                             </div>
                             <div class="carousel-item">
-                                <img src="https://images.unsplash.com/photo-1530870110042-98b2cb110834?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+                                <img src="<%=beaches[2].imgUrl%>"
                                     class="d-block w-100" alt="...">
                                 <div class="carousel-caption d-block">
-                                    <h5><a href="">beaches[2].name</a></h5>
+                                    <h5><a href="/locations/<%=beaches[2].area%>/<%=beaches[2]._id%>"><%=beaches[2].name%></a></h5>
                                 </div>
                             </div>
                         </div>
@@ -74,14 +74,27 @@
                 <h1>BEST REVIEWS OF THE WEEK</h1>
             </div>
         </div>
-        <div class="row pb-5 text-center justify-content-center">
-            <div class="col-12 col-lg-6">
-                <img src="https://images.unsplash.com/photo-1553076489-80b7a25a948b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
+        <div class="row mb-3 smallimg text-center justify-content-between">
+            <div class="col-12 col-lg-4 mb-5">
+                <img src="<%=reviews[0].imgUrl%>"
                     alt="">
+                <h1><%=reviews[0].product%></h1>
+                <p class="my-3"><%=reviews[0].description%></p>
+                 <a href="/reviews/<%=reviews[0].productType%>/<%=reviews[0]._id%>"class="btn btn-dark">Read More </a>
             </div>
-            <div class="col-12 pl-lg-5 col-lg-6">
-                <h1>This is a review of</h1>
-                <p>Description.................</p>
+            <div class="col-12 col-lg-4 mb-5">
+                <img src="<%=reviews[1].imgUrl%>"
+                    alt="">
+                <h1><%=reviews[1].product%></h1>
+                <p class="my-3"><%=reviews[1].description%></p>
+               <a href="/reviews/<%=reviews[1].productType%>/<%=reviews[1]._id%>" class="btn btn-dark">Read More </a>
+            </div>
+            <div class="col-12 col-lg-4 mb-5">
+                <img src="<%=reviews[2].imgUrl%>"
+                    alt="">
+                <h1><%=reviews[2].product%></h1>
+                <p class="my-3"><%=reviews[2].description%></p>
+                 <a href="/reviews/<%=reviews[2].productType%>/<%=reviews[2]._id%>"class="btn btn-dark">Read More</a>
             </div>
             <!-- end of article row-->
         </div>

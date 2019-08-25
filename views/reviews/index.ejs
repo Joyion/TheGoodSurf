@@ -17,19 +17,19 @@
 <div class="row my-3 py-2 text-center section">
     <div class="col">
         <h2><%=type[0].productType%></h2>
-        <a href="/reviews/<%=type[0].productType%>/">All <%=type[0].productType%> Reviews </a>
+        <a class="btn btn-secondary btn-sm my-2" href="/reviews/<%=type[0].productType%>/">All <%=type[0].productType%> Reviews </a>
     </div>
 </div>
-<div class="row smallimg aligncenter">
+<div class="row smallimg aligncenter my-5">
 <% type.forEach( function(product) { %>
-    <div class="col">
+    <div class="col my-4">
         <img src="<%= product.imgUrl %>"
             alt="">
         <div>
             <h3><%= product.product %></h3>
             <p><%= product.description %></p>
             <br>
-            <a href="/reviews/<%=product.productType%>/<%=product._id%>">READ MORE</a>
+            <a class="btn btn-dark" href="/reviews/<%=product.productType%>/<%=product._id%>">READ MORE</a>
         </div>
     </div>
 <% }); %>
