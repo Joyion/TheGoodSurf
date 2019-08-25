@@ -10,6 +10,7 @@ app.use("/public",express.static(__dirname + "/public"));
 console.log(__dirname);
 
 
+
 // get routers
 const port = process.env.PORT || 5000;
 const reviewRoutes = require("./routes/review")
@@ -18,7 +19,7 @@ const beachRoutes = require("./routes/location");
 
 // connect to db
 const mongoose = require("mongoose");
-mongoose.connect(process.env.DATABASE, 
+mongoose.connect(DATABASE, 
 {dbName: "TheGoodSurf", useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, "connection error"));
@@ -54,7 +55,7 @@ app.get("/", function(req, res){
         else {
             Review.find({company: ['Pyzel', 'RipCurl', 'CleanLiving']}, function(err, reviews){
                 if(err){
-
+                    console.log(err)
                 }
                 else {
                   res.render("landing", {beaches: beaches, reviews: reviews});   
@@ -71,5 +72,6 @@ app.get("*", function(req, res){
 });
 
 app.listen(port, function(){
-    console.log("Server Started on 5000");
+    console.log("The Good Surf at" + console.log(process.env.PORT));
+    console.log(process.env.DATABASE);
 })
