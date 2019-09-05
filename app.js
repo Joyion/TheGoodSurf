@@ -17,6 +17,7 @@ const reviewRoutes = require("./routes/review")
 const beachRoutes = require("./routes/location");
 
 
+
 // connect to db
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE, 
