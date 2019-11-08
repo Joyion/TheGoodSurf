@@ -1,13 +1,17 @@
 const express = require("express");
 const app = express();
 app.set("view engine", "ejs");
-
+const path = require("path");
 //const env = require('dotenv').config();
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use("/public",express.static(__dirname + "/public"));
 
+if(process.env.NODE_ENV !== "development"){
+   
+  const dotenv = require('dotenv').config({path: path.join(__dirname, ".env")})
+}
 
 
 
@@ -21,7 +25,8 @@ const beachRoutes = require("./routes/location");
 // connect to db
 const mongoose = require("mongoose");
 mongoose.connect(process.env.DATABASE, 
-{dbName: "TheGoodSurf", useNewUrlParser: true, useCreateIndex: true, useFindAndModify: false});
+{dbName: "TheGoodSurf", useNewUrlParser: true, 
+useCreateIndex: true, useFindAndModify: false, useUnifiedTopology: true});
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, "connection error"));
 db.once('open', function(){
@@ -31,7 +36,7 @@ db.once('open', function(){
 const Beach = require("./models/beach");
 const Review = require("./models/review");
 
-const seedDb = require("./views/seed");
+//const seedDb = require("./views/seed");
 // seedDb();
 
 
@@ -73,5 +78,5 @@ app.get("*", function(req, res){
 });
 
 app.listen(port, function(){
-    console.log("The Good Surf at" + console.log(process.env.PORT));
+    console.log("The Good Surf at " + console.log(port));
 })
