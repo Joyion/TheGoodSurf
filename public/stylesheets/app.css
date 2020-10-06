@@ -89,6 +89,7 @@ html, body {
     object-fit: contain;
 }
 
+
 a {
     color: white;
 
@@ -143,8 +144,78 @@ div.section {
     color: rgb(162, 229, 232);
 }
 
+.comment{
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+}
+
+.comment__user{
+    width: 10%;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+    color: blue;
+}
+
+#user-name {
+    color: blue;
+}
+
+.comment__text{
+    width: 50%;
+}
+
+.comment__buttons{
+    width: 20%;
+    font-size: 16px;
+}
+
+.fa-thumbs-up {
+    color: green;
+    margin: 5px;
+}
+.fa-thumbs-down {
+    color: rgba(236, 133, 14, 0.911);
+    margin: 5px;
+}
+.fa-times-circle {
+    color: red;
+    margin: 5px;
+}
+
+.comment__buttons button {
+    border: none;
+    background-color: white;
+}
+
+.comment__profile{
+   display: flex;
+   flex-direction: row;
+}
+
+.comment img {
+    width: 50px;
+    border-radius: 50%;
+    margin: 5px;
+}
+
 @media only screen and (max-width: 991px) {
    .navbar-brand h1 {
     font-size: 20px;
    }
+
+   .comment img {
+    display: none;
+
+}
+
+.comment {
+    flex-direction: column;
+}
+
+.comment__buttons{
+    width: 100%;
+
+}
   }

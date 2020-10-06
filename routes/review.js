@@ -1,6 +1,9 @@
 const express = require("express");
 const router = express.Router();
 const Review = require("../models/review");
+const passport = require("passport")
+const Comment = require("../models/comment");
+
 
 router.get("/", function(req,res){
     let products = []
@@ -58,7 +61,7 @@ router.get("/:type/new", function(req,res){
 
 // show one product
 router.get("/:type/:productId/", function(req,res){
-    Review.findById(req.params.productId, function(err, review){
+    Review.findById(req.params.productId).populate("comments").exec(function(err, review){
         if(err){
             console.log(err);
         }
@@ -84,6 +87,40 @@ router.put("/:type/:productID", function(req,res){
 router.delete("/:type/:productID", function(req,res){
 
 });
+
+
+router.post("/:type/:productID/comments", isLoggedIn, function(req,res){
+    const comment = {text: req.body.newComment.trim()};
+    console.log(comment + " " + req.user.username + " " + req.user._id);
+    
+    Comment.create(comment, function(err, c){
+        if(err){
+
+        }
+        else{
+            c.author.id = req.user._id;
+            c.author.username = req.user.username;
+            c.save();
+            Review.findById(req.params.productID, function(err, r){
+                if(err){
+
+                }
+                else{
+                    r.comments.push(c);
+                    r.save();
+                    res.redirect("/reviews/" + req.params.type + "/" + req.params.productID);
+                }
+            })
+        }
+    })
+})
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 
 
 module.exports = router;

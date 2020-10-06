@@ -2,49 +2,80 @@
 
 
 <div class="container bodycontainer">
-    <!-- main container -->
-    <main>
+  <!-- main container -->
+  <main>
 
-        <!-- row for card/map-->
-        <div class="row m-3 justify-content-center">
-            <!-- column for card-->
-            <div class="col-12">
-                    <div class="card mx-auto mb-3">
-                            <div class="card-header text-center"><h2><%=review.product%></h2></div>
-                            <div class="row no-gutters">
-                              <div class="col-12 col-md-4">
-                                <img src="<%=review.imgUrl%>" class="card-img" alt="...">
-                              </div>
-                              <div class="col-12 col-md-8">
-                                <div class="card-body">
-                                  <h5 class="card-title"><%=review.description%></h5>
-                                  <p class="card-text"><%=review.fullreview%></p>
-                                  <p class="card-text"><small class="text-muted">Author goes here</small></p>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                <!-- end of card-->
-                </div>
-            <!-- end of column-->
+    <!-- row for card/map-->
+    <div class="row m-3 justify-content-center">
+      <!-- column for card-->
+      <div class="col-12">
+        <div class="card mx-auto mb-3">
+          <div class="card-header text-center">
+            <h2><%=review.product%></h2>
+          </div>
+          <div class="row no-gutters">
+            <div class="col-12 col-md-4">
+              <img src="<%=review.imgUrl%>" class="card-img" alt="...">
             </div>
-        
+            <div class="col-12 col-md-8">
+              <div class="card-body">
+                <h5 class="card-title"><%=review.description%></h5>
+                <p class="card-text"><%=review.fullreview%></p>
+                <p class="card-text"><small class="text-muted">Author goes here</small></p>
+              </div>
+            </div>
+          </div>
         </div>
-            
-        
-        <!-- <div class="row">
-            <div class="col">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">Cras justo odio</li>
-                    <li class="list-group-item">Dapibus ac facilisis in</li>
-                    <li class="list-group-item">Morbi leo risus</li>
-                    <li class="list-group-item">Porta ac consectetur ac</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
-                </ul> -->
-            <!-- end of list group-->
-            <!-- </div> -->
-            <!-- end of row-->
-        <!-- </div> -->
+        <!-- end of card-->
+      </div>
+      <!-- end of column-->
+    </div>
+
+</div>
+
+
+<div class="row justify-content-center">
+  <div class="col-8">
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">
+        <div>
+          <form class="form-group" action="/reviews/<%=review.productType%>/<%=review._id%>/comments" method="POST">
+            <label for="newComment">Leave A Comment</label>
+            <textarea class="form-control" name="newComment" id="newComment" rows="3"></textarea>
+            <div class="d-flex justify-content-end">
+              <button class="m-2 justify-content-end btn btn-dark">Post</button>
+            </div>
+          </form>
+
+        </div>
+      </li>
+
+      <% review.comments.forEach((c) => { %>
+      <li class="list-group-item">
+        <div class="comment">
+          <div class="comment__profile"> 
+            <img src="https://images.unsplash.com/photo-1502680390469-be75c86b636f?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80" alt="Avatar">
+          <a id="user_name" class="comment__user"><%= c.author.username %></a>
+          </div>
+          <p class="comment__text"><%= c.text %></p>
+          <div class="comment__buttons">
+            <button>0<i class="far fa-thumbs-up"></i></button>
+            <button>0<i class="far fa-thumbs-down"></i></button>
+            <% if (currentUser) { 
+              if(currentUser.username == c.author.username) { %>
+              
+            <button><i class="fas fa-times-circle"></i></button>
+            <% } } %>
+          </div>
+        </div>
+      </li>
+      <% }) %>
+
+    </ul>
+    <!-- end of list group-->
+  </div>
+  <!-- end of row-->
+</div>
 <!-- end of main-->
 </main>
 

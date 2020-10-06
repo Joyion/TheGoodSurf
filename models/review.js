@@ -8,12 +8,12 @@ const reviewSchema = new mongoose.Schema({
     fullreview: {type: String}, 
     stars: {type: Number},
     companyWebsite: String,
-    verified: Boolean
-//     comments: [ {
-//         type: mongoose.Schema.Types.ObjectId,
-//         ref: "Comment"
-//      }
-//     ],
+    verified: Boolean,
+    comments: [ {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment"
+     }
+    ],
 //     author: {
 //         id: {
 //             type: mongoose.Schema.Types.ObjectId,
