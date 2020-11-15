@@ -3,6 +3,7 @@ const router = express.Router();
 const Review = require("../models/review");
 const passport = require("passport")
 const Comment = require("../models/comment");
+const User = require("../models/user");
 
 
 router.get("/", function(req,res){
@@ -50,18 +51,35 @@ router.get("/:type", function(req,res){
 });
 
 // add new product to database
-router.post("/:type", function(req,res){
+router.post("/product/new", isLoggedIn, function(req,res){
+
+    console.log(req.user.id);
+    let verified = false;
+    // if(req.user.username = "admin"){
+    //     verified= true;
+    // }
+    console.log(req.body);
+   let r =  new Review({
+        ...req.body.review,
+        verified: false,
+        author: req.user.id
+      
+    })
+    r.save((err, r) => {
+        console.log(r);
+        res.redirect("/profile/" + req.user.id)
+    })
     
 });
 
 //show form to add product
-router.get("/:type/new", function(req,res){
-    res.send("This the form for products");
+router.get("/product/new", isLoggedIn, function(req,res){
+    res.render("product/new");
 });
 
 // show one product
 router.get("/:type/:productId/", function(req,res){
-    Review.findById(req.params.productId).populate("comments").exec(function(err, review){
+    Review.findById(req.params.productId).populate("comments").populate("author").exec(function(err, review){
         if(err){
             console.log(err);
         }
@@ -92,27 +110,35 @@ router.delete("/:type/:productID", function(req,res){
 router.post("/:type/:productID/comments", isLoggedIn, function(req,res){
     const comment = {text: req.body.newComment.trim()};
     console.log(comment + " " + req.user.username + " " + req.user._id);
-    
-    Comment.create(comment, function(err, c){
+
+    Review.findById(req.params.productID, (err, rv ) => {
+        Comment.create(comment, function(err, c){
         if(err){
 
         }
         else{
             c.author.id = req.user._id;
             c.author.username = req.user.username;
-            c.save();
-            Review.findById(req.params.productID, function(err, r){
+            c.productName = rv.product;
+            c.reviewLink = "/reviews/" + rv.type + "/" + rv._id;
+            c.save((err, comment) => {
                 if(err){
 
                 }
                 else{
-                    r.comments.push(c);
-                    r.save();
-                    res.redirect("/reviews/" + req.params.type + "/" + req.params.productID);
+                    rv.comments.push(c);
+                    rv.save((err, review) => {
+                         res.redirect("/reviews/" + req.params.type + "/" + req.params.productID);
+                    });
+                   
                 }
-            })
+
+            });
         }
     })
+    })
+    
+    
 })
 
 function isLoggedIn(req, res, next){

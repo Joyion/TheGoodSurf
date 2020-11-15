@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const request = require('request');
+
 const Beach = require("../models/beach");
 
 // landing page for locations
@@ -56,7 +56,7 @@ router.get("/:area", function(req,res){
 
 // shows one beach
 router.get("/:area/:id", function(req,res){
-    Beach.findById(req.params.id, function(err, beach){
+    Beach.findById(req.params.id).populate("comments").exec((err, beach) => {
         if(err){
             console.log(err)
         }
@@ -66,6 +66,50 @@ router.get("/:area/:id", function(req,res){
     })
     
 });
+
+
+// add comment 
+router.post("/:area/:id/comments", isLoggedIn, function(req,res){
+    const comment = {text: req.body.newComment.trim()};
+    console.log(comment + " " + req.user.username + " " + req.user._id);
+
+    Beach.findById(req.params.id, (err, b ) => {
+        Comment.create(comment, function(err, c){
+        if(err){
+
+        }
+        else{
+            c.author.id = req.user._id;
+            c.author.username = req.user.username;
+            c.beach = b.name;
+            c.reviewLink = "/locations/" + b.area + "/" + b._id;
+            c.save((err, comment) => {
+                if(err){
+
+                }
+                else{
+                    b.comments.push(c);
+                    b.save((err, review) => {
+                         res.redirect("/locations/" + req.params.area + "/" + req.params.id);
+                    });
+                   
+                }
+
+            });
+        }
+    })
+    })
+    
+    
+})
+
+
+function isLoggedIn(req, res, next){
+    if(req.isAuthenticated()){
+        return next();
+    }
+    res.redirect("/login");
+}
 
 
 

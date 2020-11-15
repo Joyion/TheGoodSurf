@@ -1,14 +1,18 @@
 const mongoose = require("mongoose");
 
 const commentSchema = new mongoose.Schema({
+    productName: {type: String, default: "none"},
+    reviewLink: {type: String, default: "none"},
+    beach: {type: String, default: "none"},
+    beachLInk: {type: String, default: "none"},
     text: { type: String },
     author: 
         {
-            id: {
+            
                 type: mongoose.Schema.Types.ObjectId,
                 ref: "User"
-            },
-            username: { type: String }
+            
+       
         },
     date: {type: Date, default: Date.now},
     like: {type: Number, default: 0},

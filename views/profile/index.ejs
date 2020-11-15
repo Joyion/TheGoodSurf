@@ -1,0 +1,26 @@
+<% include ../partials/header %>
+<div class="container bodycontainer">
+   <h1>Profile Page: <%= myprofile.username %></h1> 
+   <h2>My Reviews</h2>
+  
+   <div>
+      <a href="/reviews/product/new">Add New Review</a>
+   </div>
+   <h2>My Comments</h2>
+   <div>
+      <% for( x = comments.length; x > 0; x--){ %>
+         <p><%= comments[x - 1].text %></p> 
+        <a href="<%=comments[x-1].reviewLink%>">on <%= comments[x-1].productName %></a>
+   <% } %>
+   </div>
+
+</div>
+
+
+
+<% include ../partials/footer %>
+
+
+
+
+

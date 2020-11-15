@@ -17,8 +17,9 @@ if (process.env.NODE_ENV !== "development") {
 
 // get routers
 const port = process.env.PORT || 5000;
-const reviewRoutes = require("./routes/review")
+const reviewRoutes = require("./routes/review");
 const beachRoutes = require("./routes/location");
+const profileRoutes = require("./routes/profile");
 
 
 // connect to db
@@ -68,11 +69,11 @@ app.use(function (req, res, next) {
 // use routes 
 app.use("/locations", beachRoutes);
 app.use("/reviews", reviewRoutes);
-
+app.use("/profile", profileRoutes);
 // authorization routes
 
 app.get('/register', function (req, res) {
-    res.render("auth/register", {errorMessage: ""});
+    res.render("auth/register", {errorUser: "none", errorPassword: "none"});
 })
 
 app.post('/register', isLoggedOut, function (req, res) {
@@ -84,7 +85,7 @@ app.post('/register', isLoggedOut, function (req, res) {
 
             User.register(newUser, req.body.password, function (err, user) {
                 if (err) {
-                    return res.render("auth/register")
+                    return res.render("auth/register", {errorUser: "none", errorPassword: "none"})
                 }
                 passport.authenticate("local")(req, res, function () {
                     res.redirect("/");
@@ -93,7 +94,7 @@ app.post('/register', isLoggedOut, function (req, res) {
             })
         }
         else{
-            res.render("auth/register", {errorUser: "Username must be 3 characters in length.", errorPassword: "Password must be 7 characters in length and contain one of these special characters like !@#$%&*"})
+            res.render("auth/register", {errorUser: "none", errorPassword: "Password must be 7 characters in length and contain one of these special characters like !@#$%&*"})
         }
 
     }
@@ -104,7 +105,6 @@ app.post('/register', isLoggedOut, function (req, res) {
 
 
 })
-
 
 app.get('/login', isLoggedOut, function (req, res) {
     res.render("auth/login");
@@ -136,6 +136,9 @@ function isLoggedOut(req, res, next) {
     }
     res.redirect("/");
 }
+
+
+
 
 
 

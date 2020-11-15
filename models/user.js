@@ -9,21 +9,11 @@ var userSchema = new mongoose.Schema({
     favorites: [
         {
             locationID: String,
-            locationName: String
+            locationName: String,
+            locatationUrl: String,
         }
     ],
-    reviews: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Review"
-        }
-    ],
-    comments: [
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "Comment"
-        }
-    ]
+
 });
 
 userSchema.plugin(passportLocalMongoose);

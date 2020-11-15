@@ -6,7 +6,12 @@ const beachSchema = new mongoose.Schema({
     address: {type: String},
     description: {type: String},
     stars: {type: Number},
-    verified: {type: Boolean}
+    verified: {type: Boolean},
+    comments: [ {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "Comment"
+     }
+    ],
 });
 
 module.exports = mongoose.model("Beach", beachSchema);
