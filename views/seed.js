@@ -18,6 +18,7 @@ seedDb = function () {
             description: "A popular beach and often crowded",
             stars: 3,
             verified: true
+        
         },
         {
             name: "Ocean Beach",
@@ -120,7 +121,8 @@ seedDb = function () {
             description: "A fantastic surfboard in a good wave conditions",
             fullreview: "YEAH THIS BOARDS WAS AMAZING OMG I REALLY LIKE THIS BOARD",
             stars: 5,
-            verified: true
+            verified: true,
+            author: "5fb0d6ce49801fa3cd15d7b7"
         },
         {
             product: "Swizzy Funboard 7'0",
@@ -130,7 +132,8 @@ seedDb = function () {
             description: "A fantastic surfboard in a good wave conditions",
             fullreview: "YEAH THIS BOARDS WAS AMAZING OMG I REALLY LIKE THIS BOARD",
             stars: 4,
-            verified: true
+            verified: true,
+            author: "5fb0d6ce49801fa3cd15d7b7"
         },
         {
             product: "Cruizer Longboard 9'0",
@@ -140,7 +143,8 @@ seedDb = function () {
             description: "A fantastic surfboard in a good wave conditions",
             fullreview: "YEAH THIS BOARDS WAS AMAZING OMG I REALLY LIKE THIS BOARD",
             stars: 3,
-            verified: true
+            verified: true,
+            author: "5fb0d6ce49801fa3cd15d7b7"
         },
         {
             product: "DragonFire",
@@ -150,7 +154,8 @@ seedDb = function () {
             description: "A fantastic wetsuit in a cold water",
             fullreview: "Feels like you're being heated by dragon's breath ",
             stars: 5,
-            verified: true
+            verified: true,
+            author: "5fb0d6ce49801fa3cd15d7b7"
         },
         {
             product: "Tropical",
@@ -160,7 +165,8 @@ seedDb = function () {
             description: "light wetsuit for cool conditions",
             fullreview: "AMAZING FOR THE COOL SPRING MORNINGS ",
             stars: 4,
-            verified: true
+            verified: true,
+            author: "5fb0d6ce49801fa3cd15d7b7"
         },
         {
             product: "Heavy Rain",
@@ -170,7 +176,8 @@ seedDb = function () {
             description: "For the coldest conditions",
             fullreview: "Those who are willing to to surf freezing condiitons, need this wetsuit.",
             stars: 5,
-            verified: true
+            verified: true,
+            author: "5fb0d6ce49801fa3cd15d7b7"
         },
         {
             product: "Sex Fantastic Wax",
@@ -180,7 +187,8 @@ seedDb = function () {
             description: "Amazing wax",
             fullreview: "Amazing wax. cheap price",
             stars: 4,
-            verified: true
+            verified: true,
+            author: "5fb0d6ce49801fa3cd15d7b7"
         },
         {
             product: "Lifeguard",
@@ -190,7 +198,8 @@ seedDb = function () {
             description: "A floatations for those heavy sets",
             fullreview: "Live Saving infloatbale rashguard for dangerous conditions",
             stars: 5,
-            verified: true
+            verified: true,
+            author: "5fb0d6ce49801fa3cd15d7b7"
         },
         {
             product: "Acai Powder",
@@ -200,7 +209,8 @@ seedDb = function () {
             description: "A good-tasting smoothie powder",
             fullreview: "Full Flavor and all you need to do this add water but a bit expensive.",
             stars: 3,
-            verified: true
+            verified: true,
+            author: "5fb0d6ce49801fa3cd15d7b7",
         }
     ];
 

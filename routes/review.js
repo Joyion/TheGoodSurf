@@ -110,7 +110,7 @@ router.delete("/:type/:productID", function(req,res){
 router.post("/:type/:productID/comments", isLoggedIn, function(req,res){
     const comment = {text: req.body.newComment.trim()};
     console.log(comment + " " + req.user.username + " " + req.user._id);
-
+a
     Review.findById(req.params.productID, (err, rv ) => {
         Comment.create(comment, function(err, c){
         if(err){

@@ -56,7 +56,7 @@ router.get("/:area", function(req,res){
 
 // shows one beach
 router.get("/:area/:id", function(req,res){
-    Beach.findById(req.params.id).populate("comments").exec((err, beach) => {
+    Beach.findById(req.params.id).populate("comments").populate("author").exec((err, beach) => {
         if(err){
             console.log(err)
         }
