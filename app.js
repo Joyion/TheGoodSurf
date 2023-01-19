@@ -2,21 +2,23 @@ const express = require("express");
 const app = express();
 app.set("view engine", "ejs");
 const path = require("path");
-//const env = require('dotenv').config();
+const env = require('dotenv').config();
 
 const bodyParser = require("body-parser");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/public", express.static(__dirname + "/public"));
+// const dotenv = require('dotenv').config({ path: path.join(__dirname, ".env") })
+
 
 if (process.env.NODE_ENV !== "development") {
 
     const dotenv = require('dotenv').config({ path: path.join(__dirname, ".env") })
 }
 
-
+console.log(process.env.NODE_ENV);
 
 // get routers
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 9090;
 const reviewRoutes = require("./routes/review");
 const beachRoutes = require("./routes/location");
 const profileRoutes = require("./routes/profile");
@@ -29,6 +31,7 @@ mongoose.connect(process.env.DATABASE,
         dbName: "TestSurf", useNewUrlParser: true,
         useCreateIndex: true, useFindAndModify: false, useUnifiedTopology: true
     });
+
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, "connection error"));
 db.once('open', function () {
@@ -40,8 +43,8 @@ const Review = require("./models/review");
 const User = require("./models/user");
 const Comment = require("./models/comment");
 
-// const seedDb = require("./views/seed");
-// seedDb();
+const seedDb = require("./views/seed");
+seedDb();
 
 app.use(require("express-session")({
     secret: "See You Space Cowboy",
