@@ -2,35 +2,9 @@
 
 <!-- this is prodcut-->
 
-<div class="container bodycontainer">
-    <!--main container above-->
-
-    <!-- Title -->
-    <div class="row text-center">
-        <div class="col my-3">
-            <h1 class="subtitle"><%=type[0].productType%> Reviews</h1>
-            <a class="my-2" href="">Add Review</a>
-        </div>
-
-    </div>
-
-    <!-- List All products of type-->
-    <div class="row my-2 ">
-        <%  type.forEach(function(item){ %>
-        <div class="col-12 col-md-3 my-2">
-              <div class="card border-light" >
-                        <h5 class="card-header text-center"><%=item.product%></h5>
-                        <img class="card-img-top" src="<%=item.imgUrl%>" alt="">
-                        <div class="card-body">
-                            <h5 class="card-title"> STARS <%=item.stars%>.</h5>
-                            <p class="card-text"><%= item.description%></p>
-                            <a href="/reviews/<%=item.productType%>/<%=item._id%>" class="btn btn-dark">Read More</a>
-                        </div>
-                </div>
-        </div>
-        <%   }) %>
-    </div>
-
+<main>
+    <p>News</p>
+</main>
    
         
 
