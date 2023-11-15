@@ -1,42 +1,16 @@
-const express = require("express");
-const router = express.Router();
-const User = require("../models/user");
-const Comment = require("../models/comment")
+import express from "express";
+import User from "../models/user.js";
+import { isLoggedIn } from "./auth.js";
+export const profileRouter = express.Router();
 
 
-router.get("/:id", isLoggedIn, (req, res) => {
 
-    User.findById(req.params.id, (err, user) => {
-        if(err){
+profileRouter.get(("/"), isLoggedIn, (req,res) => {
+    // console.log(req.user.username);
 
-        }
-        else{
-            Comment.find({"author": user._id}).populate("author").exec((err, comments) => {
-                if(err){
-
-                }
-                else{
-                console.log(user);
-                console.log(comments);
-                res.render("profile/index", {myprofile: user, comments: comments}) 
-                }
-
-            })
-            
-        }
-    })
-
-    
-  
+    res.render("profile/index")
 })
 
-function isLoggedIn(req, res, next) {
-    if (req.isAuthenticated()) {
-        return next();
-    }
-    res.redirect("/login");
-}
 
 
 
-module.exports = router;

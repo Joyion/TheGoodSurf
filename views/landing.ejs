@@ -1,4 +1,4 @@
-<%- include('partials/header'); -%>
+<%- include("partials/header"); %>
 
 <main>
     <h1>The Good Surf</h1>
@@ -32,17 +32,19 @@
       <section>
         <h2>Spot Checks</h2>
         <p>Info and Reviews on Surf Spots around the world </p>
+        <ol>
+          <% locations.forEach((location) => { %>
+            <li><%= location.name %></li>
+          <% }) %>
+        </ol>
+      
       </section>
 
       <section>
         <h2>Product Reviews</h2>
         <p>Reviews on latest Surf Equipment, Swimwear and Asseccories</p>
       </section>
-
-
-
-
 </main>
 
 
-<%- include('partials/footer'); -%>
+

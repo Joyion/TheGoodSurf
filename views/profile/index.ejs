@@ -1,25 +1,13 @@
-<%- include("../partials/header")  -%>
+<%- include("../partials/header")  %>
 
-<div class="container bodycontainer">
-   <h1>Profile Page: <%= myprofile.username %></h1> 
-   <h2>My Reviews</h2>
-  
+<main>
    <div>
-      <a href="/reviews/product/new">Add New Review</a>
+      <p>Username</p>
    </div>
-   <h2>My Comments</h2>
-   <div>
-      <% for( x = comments.length; x > 0; x--){ %>
-         <p><%= comments[x - 1].text %></p> 
-        <a href="<%=comments[x-1].reviewLink%>">on <%= comments[x-1].productName %></a>
-   <% } %>
-   </div>
-
-</div>
+</main>
 
 
-
-<%- include("../partials/footer")  -%>
+<%- include("../partials/footer")  %>
 
 
 

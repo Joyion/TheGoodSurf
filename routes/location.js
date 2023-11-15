@@ -1,116 +1,43 @@
-const express = require("express");
-const router = express.Router();
+import express from "express";
+import Location from "../models/location.js";
 
-const Beach = require("../models/beach");
+export const locationRouter = express.Router();
 
-// landing page for locations
-router.get("/", function(req, res){
-    let locations = [];
+locationRouter.get("/", (req,res) => {
+    res.render("location/index")
+})
 
-    Beach.find({area: "North America"}, function(err, northAmerica){
-        if(err){
-            console.log(err);
-        }
-        else {
-            locations.push(northAmerica);
-            Beach.find({area: "South America"}, function(err, southAmerica){
-                if(err) {
-                    console.log(err);
-                }
-                else {
-                    locations.push(southAmerica);
-                    Beach.find({area: "Europe"}, function(err, europe){
-                        if(err){
+// locationRouter.get("/region/:region", (req,res) => {
+//     res.render("location/region/")
+// })
 
-                        }
-                        else {
-                        locations.push(europe);
-                        res.render("location/index", {locations: locations})
+// locationRouter.get("/region/:surfSpot/:id", (req,res) => {
+//     res.render("location/region/index")
+// })
 
-                        }
-                    }).limit(3);
-                }
-
-            }).limit(3);
-        }
-
-    }).limit(3);
-// end of route
-    });
-
-// shows all beaches of area
-router.get("/:area", function(req,res){
-    Beach.find({area: req.params.area}, function(err, beaches){
-        if(err){
-            console.log(err)
-         
-        }
-        else {
-           
-           res.render("beach/index", {beaches: beaches});
-        }
-    });
-   
-});
+locationRouter.get("/new", (req,res) => {
+    res.render("location/region/new")
+}) 
 
 
-// shows one beach
-router.get("/:area/:id", function(req,res){
-    Beach.findById(req.params.id).populate("comments").populate("author").exec((err, beach) => {
-        if(err){
-            console.log(err)
-        }
-        else {
-           res.render("beach/show", {beach: beach});
-        }
-    })
-    
-});
+// Sanitize HTML
+locationRouter.post("/new", async (req, res) => {
+  res.send(req.body.description)
+    const newLocation = new Location({
+        name: req.body.name, 
+        locationArea: req.body.region,
+        description: req.body.description,
+        rating: req.body.rating})
 
+    try{
+        await newLocation.save();
 
-// add comment 
-router.post("/:area/:id/comments", isLoggedIn, function(req,res){
-    const comment = {text: req.body.newComment.trim()};
-    console.log(comment + " " + req.user.username + " " + req.user._id);
+    }catch(error){
+        console.log(error);
+    }
 
-    Beach.findById(req.params.id, (err, b ) => {
-        Comment.create(comment, function(err, c){
-        if(err){
+   // const newLocation = new Location({})
 
-        }
-        else{
-            c.author.id = req.user._id;
-            c.author.username = req.user.username;
-            c.beach = b.name;
-            c.reviewLink = "/locations/" + b.area + "/" + b._id;
-            c.save((err, comment) => {
-                if(err){
-
-                }
-                else{
-                    b.comments.push(c);
-                    b.save((err, review) => {
-                         res.redirect("/locations/" + req.params.area + "/" + req.params.id);
-                    });
-                   
-                }
-
-            });
-        }
-    })
-    })
-    
     
 })
 
-
-function isLoggedIn(req, res, next){
-    if(req.isAuthenticated()){
-        return next();
-    }
-    res.redirect("/login");
-}
-
-
-
-module.exports = router;

@@ -1,23 +1,18 @@
-const mongoose = require("mongoose");
-var passportLocalMongoose = require("passport-local-mongoose");
+import mongoose from "mongoose";
+import LocalStrategy from "passport-local"
+import passportLocalMongoose from "passport-local-mongoose";
 
 
-var userSchema = new mongoose.Schema({
-    username: {type: String},
-    password: {type: String},
-    bio: {type: String},
-    favorites: [
-        {
-            locationID: String,
-            locationName: String,
-            locatationUrl: String,
-        }
-    ],
+const Schema = mongoose.Schema;
 
-});
+const UserSchema = new Schema({
+    username: {type: String, required: true, unique: true},
+    email: {type: String, required: true, unique: true},
+})
 
-userSchema.plugin(passportLocalMongoose);
+// Passsord field salted hashed and handled by Passport Local Mongoose
+UserSchema.plugin(passportLocalMongoose);
 
+const User = mongoose.model("User", UserSchema)
 
-
-module.exports = mongoose.model("User", userSchema);
+export default User;

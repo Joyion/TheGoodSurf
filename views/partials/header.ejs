@@ -49,8 +49,20 @@
         <ul class="navbar-nav">
        
             <li class="nav-item">
-                <a class="nav-link" href="/login">Login</a>
+              <% if (locals.isAuth) { %>
+                <a class="nav-link"  href="/profile">Profile</a>
+                <form action="/auth/logout" method="post" >
+                  <button type="submit" class="btn btn-link nav-link">Logout</button>
+                </form>
+             
+             <% } else { %> 
+              <li>
+                <a class="nav-link" href="/auth/login">Login</a>
               </li>
+           
+             <% } %>
+    
+            </li>
         </ul>
           
  

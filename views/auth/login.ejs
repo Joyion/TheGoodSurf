@@ -1,16 +1,20 @@
-<%- include("../partials/header") -%>
+<%- include("../partials/header"); %>
 
 
 <div style="margin-top: 100px"class="container bodycontainer">
     <h1>Login</h1>
-    <form action="/login" method="post">
+   <% if(isError) { %>
+        <%- include("../partials/error"); %>
+   <% } %>
+    <form action="/auth/login" method="post">
         <input type="text" name="username" placeholder="username" />
         <input type="password" name="password" placeholder="password" />
         <button>Login</button>
     </form>
+    <a href="/auth/register">Register</a>
 
 </div>
 
 
 
-<%- include("../partials/footer") -%>
+<%- include("../partials/footer"); %>
